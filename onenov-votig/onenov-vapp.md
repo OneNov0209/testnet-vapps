@@ -6,32 +6,32 @@ A **decentralized, verifiable voting dApp** powered by **Soundness Layer**, offe
 
 ## Overview
 
-**OneNov Voting dApp** memungkinkan komunitas atau DAO melakukan voting yang:
-- **Verifiable** — setiap vote dilengkapi zero-knowledge proof (`ZKP`)  
-- **Private** — hasil dihitung tanpa mengungkap identitas voter  
-- **Immutable** — proof tersimpan di Walrus dan diverifikasi via Soundness Layer  
+**OneNov Voting dApp** enables communities or DAOs to conduct voting that is:
+- **Verifiable** — each vote comes with a zero-knowledge proof (`ZKP`)  
+- **Private** — results are calculated without revealing voter identity  
+- **Immutable** — proofs are stored on Walrus and verified via Soundness Layer  
 
-Dengan memanfaatkan integrasi Soundness, voting jadi cepat, terdesentralisasi, dan rendah biaya on-chain.
+By leveraging Soundness integration, voting becomes fast, decentralized, and low-cost on-chain.
 
 ---
 
 ## Soundness Layer Integration
 
-- **Generate proof** saat user vote via Soundness CLI atau client-side prover seperti Ligero  
-- **Upload proof** ke **Walrus**, lalu ambil `blob ID` sebagai reference  
-- **Submit blob ID** via smart contract di Soundness Layer (Move) → diverifikasi oleh validator Sui, dengan attestation on-chain  
-  - Proses ini murah, cepat, dan tidak perlu menyimpan data voting full di chain2  
-- Frontend/backend memanfaatkan proof sebagai verifikasi transparan dan audit-friendly
+- **Generate proof** when a user votes via Soundness CLI or client-side prover like Ligero  
+- **Upload proof** to **Walrus**, then retrieve the `blob ID` as a reference  
+- **Submit blob ID** via a smart contract on the Soundness Layer (Move) → verified by Sui validators, with on-chain attestation  
+  - This process is inexpensive, fast, and does not require storing full voting data on-chain2  
+- The frontend/backend utilizes the proof for transparent and audit-friendly verification
 
 ---
 
 ## Architecture
 
-[Frontend (React)]  ── cast vote → generate ZKP(s) → └─ proof → Walrus → blob ID → Soundness Layer contract (on Sui)
+[Frontend (React)] ── cast vote → generate ZKP(s) → └─ proof → Walrus → blob ID → Soundness Layer contract (on Sui)
 
-- **Smart Contract**: Move-based (Soundness Layer), menerima blob ID dan menyimpan attestation
-- **Backend/CLI**: menghasilkan proof dan submit ke Soundness
-- **Frontend**: interface untuk create proposal, vote, dan tampilkan hasil tunduk attested proof
+- **Smart Contract**: Move-based (Soundness Layer), receives blob ID and stores attestation
+- **Backend/CLI**: generates proof and submits to Soundness
+- **Frontend**: interface to create proposals, vote, and display results based on attested proof
 
 ---
 
@@ -40,8 +40,8 @@ Dengan memanfaatkan integrasi Soundness, voting jadi cepat, terdesentralisasi, d
 | Layer       | Tech / Tool                                  |
 |-------------|----------------------------------------------|
 | Frontend    | React + Tailwind                             |
-| Proof       | Soundness CLI / Ligero                        |
-| Storage     | Walrus (decentralized data)                   |
+| Proof       | Soundness CLI / Ligero                       |
+| Storage     | Walrus (decentralized data)                  |
 | Blockchain  | Soundness Layer contract (Move on Sui)       |
 | dApp Host   | Soundness Layer Testnet (developer access)   |
 
@@ -49,22 +49,22 @@ Dengan memanfaatkan integrasi Soundness, voting jadi cepat, terdesentralisasi, d
 
 ## Features
 
-1. **Submit voting proposal** di frontend  
+1. **Submit voting proposal** on the frontend  
 2. **Cast vote → generate ZKP → store to Walrus**  
 3. **Submit blob ID to Soundness Layer**, store attestation on-chain  
-4. **View tally & proof status**, transparan dan dapat diaudit oleh siapa saja
+4. **View tally & proof status**, transparent and auditable by anyone
 
 ---
 
 ## Timeline
 
 **PoC (2-4 weeks)**  
-- Integrasi Soundness CLI & generate proof  
-- Simpan proof di Walrus → dapatkan blob ID  
+- Integrate Soundness CLI & generate proof  
+- Store proof on Walrus → retrieve blob ID  
 - Submit to Soundness Layer contract + simple React UI  
 
 **MVP (4-8 weeks)**  
-- Tambahkan multi-choice voting  
+- Add multi-choice voting  
 - Auth (Discord/Github) + UI polish  
 - User testing & proof explorer
 
@@ -81,9 +81,7 @@ Dengan memanfaatkan integrasi Soundness, voting jadi cepat, terdesentralisasi, d
 
 ## Why Soundness?
 
-- **Fast finality & low cost**: ideal buat voting yang butuh real-time  
-- **Decentralized & censorship-resistant**: proof tidak dikendalikan satu pihak saja3  
-- **Cross-chain readiness**: proof bisa diverifikasi lintas blockchain  
-- **Proof auditability**: semua vote bisa dicek oleh pihak ketiga tanpa kompromi
-
----
+- **Fast finality & low cost**: ideal for real-time voting  
+- **Decentralized & censorship-resistant**: proofs are not controlled by a single party3  
+- **Cross-chain readiness**: proofs can be verified across blockchains  
+- **Proof auditability**: all votes can be checked by third parties without compromise
